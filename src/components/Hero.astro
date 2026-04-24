@@ -313,4 +313,62 @@ const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
     .hero__gear-title,
     .hero__gear-blocks { position: relative; z-index: 2; }
   }
+
+  @media (min-width: 1281px) {
+    .hero__top {
+      display: grid;
+      grid-template-columns: minmax(480px, 1fr) 1.3fr;
+      gap: 48px;
+      align-items: center;
+      padding: 80px 120px;
+      min-height: 880px;
+    }
+    .hero__bg { inset: 0; }
+    .hero__marquee { font-size: 320px; line-height: 260px; top: 20%; left: -20%; }
+    .hero__char {
+      order: 2;
+      height: auto;
+      align-self: stretch;
+      position: relative;
+    }
+    .hero__char img {
+      position: absolute;
+      width: auto;
+      height: 110%;
+      max-height: 900px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
+    .hero__card {
+      order: 1;
+      max-width: 640px;
+      margin: 0;
+      padding: 48px 48px 64px;
+    }
+    .hero__title { font-size: 56px; }
+
+    .hero__gear { padding: 140px 120px; min-height: 860px; }
+    .hero__gear-title { text-align: center; margin: 0 auto 80px; }
+    .hero__gear-wrap .hero__gear-blocks {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+      min-height: 420px;
+    }
+    .hero__gear-wrap .gear-block:nth-child(1) { grid-column: 1; grid-row: 1; align-self: start; }
+    .hero__gear-wrap .gear-block:nth-child(2) { grid-column: 1; grid-row: 2; align-self: end; }
+    .hero__gear-wrap .gear-block:nth-child(3) { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+    .gear-block { max-width: 320px; }
+  }
+
+  @media (min-width: 1600px) {
+    .hero__top { padding: 100px 180px; }
+    .hero__gear { padding: 160px 180px; }
+  }
 </style>

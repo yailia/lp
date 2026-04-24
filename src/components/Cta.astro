@@ -97,4 +97,12 @@ const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
     .cta__inner { max-width: 960px; padding: 80px 96px; }
     .cta__title h2 { font-size: 48px; }
   }
+
+  @media (min-width: 1281px) {
+    .cta { padding: 120px 120px; }
+    .cta__inner { max-width: 1200px; padding: 96px 120px; }
+    .cta__title h2 { font-size: 56px; }
+  }
+
+  @media (min-width: 1600px) { .cta { padding: 140px 180px; } }
 </style>

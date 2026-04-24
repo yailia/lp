@@ -150,4 +150,22 @@ iGB LiVE 2025 hosted over 20,000 visitors, the majority of which were decision m
     .faq__list { max-width: 960px; }
     .faq__img { max-width: 600px; }
   }
+
+  @media (min-width: 1281px) {
+    .faq {
+      padding: 120px 120px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      column-gap: 80px;
+      max-width: 1600px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .faq__head { grid-column: 1 / -1; }
+    .faq__list { grid-column: 1; max-width: none; }
+    .faq__img { grid-column: 2; margin: 0; max-width: none; }
+    .faq__head h2 { font-size: 64px; }
+  }
+
+  @media (min-width: 1600px) { .faq { padding: 140px 180px; } }
 </style>

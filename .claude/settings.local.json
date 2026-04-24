@@ -13,7 +13,9 @@
       "Bash(py *)",
       "mcp__figma__get_screenshot",
       "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/675f7616-1b60-4ec1-a478-d3ec93eb8d85\" -o /tmp/tlead810.png)",
-      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/675f7616-1b60-4ec1-a478-d3ec93eb8d85\" -o C:/work/_SLOT/lp/.tmp/t810.png)"
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/675f7616-1b60-4ec1-a478-d3ec93eb8d85\" -o C:/work/_SLOT/lp/.tmp/t810.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/03a4e5a2-1a55-4c32-9f28-3cd7290a0c73\" -o C:/work/_SLOT/lp/.tmp/hero1440.png)",
+      "Bash(curl *)"
     ]
   }
 }

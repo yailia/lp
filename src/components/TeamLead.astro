@@ -100,4 +100,22 @@ const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
     .tlead__head h2 { font-size: 54px; }
     .tlead__value { font-size: 32px; }
   }
+
+  @media (min-width: 1281px) {
+    .tlead {
+      padding: 120px 120px;
+      max-width: 1600px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      grid-template-rows: auto auto auto;
+      column-gap: 80px;
+      row-gap: 40px;
+    }
+    .tlead__head { grid-column: 1 / -1; }
+    .tlead__row--map { grid-column: 2; grid-row: 2 / span 2; }
+    .tlead__row:not(.tlead__row--map) { max-width: 560px; }
+    .tlead__head h2 { font-size: 64px; }
+  }
+
+  @media (min-width: 1600px) { .tlead { padding: 140px 180px; } }
 </style>

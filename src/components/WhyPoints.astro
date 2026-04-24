@@ -182,4 +182,17 @@ const cards = [
       gap: 20px;
     }
   }
+
+  @media (min-width: 1281px) {
+    .why { padding: 120px 120px; }
+    .why__title h2 { font-size: 64px; }
+    .why__cards {
+      max-width: 1400px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .why { padding: 140px 180px; }
+  }
 </style>

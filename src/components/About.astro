@@ -190,4 +190,24 @@ const tapeGradients = [
     .about-stat__v { font-size: 40px; }
     .about__img { height: 500px; }
   }
+
+  @media (min-width: 1281px) {
+    .about { padding: 120px 120px; }
+    .about__card {
+      max-width: 1400px;
+      padding: 80px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      column-gap: 80px;
+      row-gap: 40px;
+      grid-template-areas: "head img" "stats img";
+    }
+    .about__head { grid-area: head; }
+    .about__stats { grid-area: stats; }
+    .about__img { grid-area: img; height: 100%; }
+    .about__head h2 { font-size: 56px; }
+    .about-stat { min-width: calc(50% - 5px); }
+  }
+
+  @media (min-width: 1600px) { .about { padding: 140px 180px; } }
 </style>
