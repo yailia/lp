@@ -72,6 +72,8 @@ export function initParticles(container: HTMLElement) {
     uniform sampler2D tOrigin;
     uniform float timer;
     uniform float dt;
+    uniform vec3 uAttractor;
+    uniform float uAttractStrength;
     varying vec2 vUv;
 
     vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
@@ -114,6 +116,10 @@ export function initParticles(container: HTMLElement) {
       vec4 orig = texture2D(tOrigin, vUv);
       float life = prev.a - dt * 0.6;
       vec3 pos = prev.xyz + flow(prev.xyz * 1.5, timer) * dt * 0.35;
+      // gravity pull toward cursor (attractor in sim-space, same scale as prev.xyz)
+      vec3 toA = uAttractor - prev.xyz;
+      float d2 = dot(toA, toA) + 0.02;
+      pos += toA * (uAttractStrength * dt / d2);
       if(life <= 0.0){
         pos = orig.xyz;
         life = 1.0;
@@ -130,6 +136,8 @@ export function initParticles(container: HTMLElement) {
       tOrigin: { value: originTex },
       timer: { value: 0 },
       dt: { value: 0.016 },
+      uAttractor: { value: new THREE.Vector3(0, 0, 0) },
+      uAttractStrength: { value: 0.0 },
     },
   });
 
@@ -237,8 +245,8 @@ export function initParticles(container: HTMLElement) {
   const particleUniforms = {
     map: { value: null as THREE.Texture | null },
     oldmap: { value: null as THREE.Texture | null },
-    firstColor: { value: new THREE.Color(0x406B00) },
-    secondColor: { value: new THREE.Color(0x7DD100) },
+    firstColor: { value: new THREE.Color(0x000000) },
+    secondColor: { value: new THREE.Color(0x3a3a44) },
   };
 
   const particleMat = new THREE.ShaderMaterial({
@@ -399,6 +407,9 @@ export function initParticles(container: HTMLElement) {
     sunTarget.set(mouseNDC.x * 22, mouseNDC.y * 14, 0);
     sunPos.lerp(sunTarget, 0.1);
     vLight.position.copy(sunPos);
+    simMat.uniforms.uAttractor.value.copy(sunPos).multiplyScalar(0.01);
+    const hover = Math.min(1, mouseNDC.length() * 2);
+    simMat.uniforms.uAttractStrength.value = 0.015 * hover;
     camera.lookAt(sunPos.x * 0.3, sunPos.y * 0.3, 0);
 
     // 1) godray source: clone (black) + sun (white) on black
