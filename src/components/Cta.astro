@@ -1,0 +1,100 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+---
+
+<section class="cta" data-node-id="5114:113738" style={`--cta-bg: url(${asset('img/cta/bg.png')})`}>
+  <div class="cta__card">
+    <div class="cta__inner">
+      <div class="cta__title">
+        <h2>Establish contact</h2>
+        <p>Huge expos provide the perfect cover for a covert face-to-face. The most productive meetings are scheduled ahead of time — make time for your meetup to be among the first to see the PREDICTOR demo and start earning. Book our iGB meeting today.</p>
+      </div>
+      <button type="button" class="cta__btn">Book a meeting</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    padding: 48px 20px;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--cta-bg);
+    background-size: cover;
+    background-position: center;
+  }
+  .cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(207deg, rgba(0,0,0,0) 51%, #000 89%),
+      linear-gradient(84deg, rgba(0,0,0,0) 50%, #000 98%);
+  }
+  .cta__card {
+    background: var(--color-primary);
+    border-radius: var(--radius-sm);
+    padding: 0;
+  }
+  .cta__inner {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 44px 24px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+  }
+  .cta__title { display: flex; flex-direction: column; gap: 8px; }
+  .cta__title h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: #000;
+  }
+  .cta__title p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: #000;
+  }
+  .cta__btn {
+    background: #000;
+    color: var(--color-white);
+    padding: 16px 30px;
+    border-radius: var(--radius-sm);
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  @media (min-width: 641px) {
+    .cta { padding: 72px 60px; }
+    .cta__inner { padding: 60px 48px; max-width: 720px; margin: 0 auto; }
+    .cta__title h2 { font-size: 40px; }
+    .cta__title p { font-size: 16px; }
+    .cta__btn { padding: 18px 36px; font-size: 18px; }
+  }
+
+  @media (min-width: 1025px) {
+    .cta { padding: 96px 120px; }
+    .cta__inner { max-width: 960px; padding: 80px 96px; }
+    .cta__title h2 { font-size: 48px; }
+  }
+</style>

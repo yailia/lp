@@ -1,0 +1,153 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+
+const items = [
+  {
+    q: 'What is iGB L!VE',
+    a: `iGB L!VE London 2026 is a conference for affiliates, online casino and sportsbook operators, tech suppliers, payment and content providers, and investors. iGB London is a leading iGaming exhibition and network platform that brings together.
+
+iGB LiVE 2025 hosted over 20,000 visitors, the majority of which were decision makers and C-level. And this is why it matters: iGB networking is the best opportunity to share experiences and discuss licensing and compliance, traffic acquisition strategies, iGaming trends 2026, technology, player preferences, emerging markets, and other aspects of the online gambling business. Check out iGB conference 2026 dates, the location in London, and the event floorplan below.`,
+    open: true,
+  },
+  { q: 'Where is iGB London 2026', a: '' },
+  { q: 'How to find the Slotegrator stand', a: '' },
+  { q: 'Where to see the iGB London floor plan', a: '' },
+  { q: 'How to book a meeting at iGB London', a: '' },
+];
+---
+
+<section class="faq" data-node-id="5121:291905">
+  <div class="faq__head">
+    <h2>Verify the intel</h2>
+  </div>
+
+  <ul class="faq__list">
+    {items.map((it, i) => (
+      <li class={`faq-item ${it.open ? 'is-open' : ''}`}>
+        <button class="faq-item__q" type="button" aria-expanded={it.open ? 'true' : 'false'}>
+          <span>{it.q}</span>
+          <span class="faq-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 30 30" width="30" height="30">
+              <path class="faq-item__plus" d="M15 9v12M9 15h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </button>
+        {it.a && <div class="faq-item__a">{it.a.split('\n\n').map((para) => <p>{para}</p>)}</div>}
+      </li>
+    ))}
+  </ul>
+
+  <div class="faq__img">
+    <img src={asset('img/faq/about-slot.png')} alt="" />
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-item__q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+</script>
+
+<style>
+  .faq {
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+  .faq__head { width: 100%; padding-bottom: 30px; }
+  .faq__head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .faq__list {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+  }
+  .faq-item {
+    border-bottom: 1px solid #999;
+  }
+  .faq-item:last-child { border-bottom: 0; }
+
+  .faq-item__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+    padding: 20px 0;
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: left;
+    cursor: pointer;
+  }
+  .faq-item.is-open .faq-item__q { color: var(--color-primary); }
+  .faq-item__icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    color: var(--color-white);
+  }
+  .faq-item.is-open .faq-item__icon { color: var(--color-primary); }
+  .faq-item.is-open .faq-item__plus {
+    d: path('M9 15h12');
+  }
+
+  .faq-item__a {
+    padding: 0 0 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .faq-item__a p { margin: 0 0 16px; }
+  .faq-item__a p:last-child { margin-bottom: 0; }
+  .faq-item:not(.is-open) .faq-item__a { display: none; }
+
+  .faq__img {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+  }
+  .faq__img img { width: 100%; height: 100%; object-fit: cover; }
+
+  @media (min-width: 641px) {
+    .faq { padding: 72px 60px; gap: 60px; }
+    .faq__head h2 { font-size: 44px; }
+    .faq__list { max-width: 780px; padding: 0 32px; }
+    .faq-item__q { font-size: 18px; padding: 28px 0; }
+    .faq-item__a { font-size: 16px; padding-bottom: 28px; }
+    .faq__img { max-width: 500px; }
+  }
+
+  @media (min-width: 1025px) {
+    .faq { padding: 96px 120px; }
+    .faq__head h2 { font-size: 54px; max-width: 1000px; }
+    .faq__list { max-width: 960px; }
+    .faq__img { max-width: 600px; }
+  }
+</style>

@@ -1,0 +1,103 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+---
+
+<section class="tlead" data-node-id="5113:113030">
+  <div class="tlead__head">
+    <h2>Location declassified: iGB London 2026</h2>
+    <p>iGB LiVE London is an iGaming expo for online casino and sportsbook operators, affiliates, investors, and suppliers. Join us at one of the industry’s biggest events.</p>
+  </div>
+
+  <div class="tlead__row">
+    <span class="tlead__label">Date</span>
+    <p class="tlead__value tlead__value--green">01-02 July 2026</p>
+  </div>
+
+  <div class="tlead__row">
+    <span class="tlead__label">Where?</span>
+    <p class="tlead__value">Slotegrator stand S44, ExCel London</p>
+    <p class="tlead__value"><span class="tlead__accent">London,</span> United Kingdom</p>
+  </div>
+
+  <div class="tlead__row tlead__row--map">
+    <span class="tlead__label">Exhibition map</span>
+    <div class="tlead__map">
+      <img src={asset('img/team/map.png')} alt="Exhibition map" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .tlead {
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .tlead__head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 2px;
+  }
+  .tlead__head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .tlead__head p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .tlead__row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tlead__label {
+    font-size: 18px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .tlead__value {
+    font-size: 22px;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .tlead__value--green { color: var(--color-primary); }
+  .tlead__accent { color: var(--color-primary); }
+
+  .tlead__map {
+    width: 100%;
+    aspect-ratio: 599 / 309;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+  .tlead__map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 641px) {
+    .tlead { padding: 72px 60px; gap: 40px; }
+    .tlead__head h2 { font-size: 44px; max-width: 720px; }
+    .tlead__head p { font-size: 16px; max-width: 720px; }
+    .tlead__label { font-size: 20px; }
+    .tlead__value { font-size: 28px; }
+  }
+
+  @media (min-width: 1025px) {
+    .tlead { padding: 96px 120px; max-width: 1440px; margin: 0 auto; }
+    .tlead__head h2 { font-size: 54px; }
+    .tlead__value { font-size: 32px; }
+  }
+</style>

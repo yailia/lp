@@ -1,0 +1,86 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+---
+
+<header class="hdr" data-node-id="5072:86511">
+  <nav class="hdr__nav">
+    <a class="hdr__logo" href="#" aria-label="Slotegrator">
+      <img src={asset('img/logo/slot-znak.svg')} alt="" width="40" height="40" />
+    </a>
+    <div class="hdr__actions">
+      <button class="hdr__msg" type="button" aria-label="Messages">
+        <img src={asset('img/ui/dialog.svg')} alt="" width="24" height="24" />
+      </button>
+      <button class="hdr__burger" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: var(--color-black-60);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .hdr__nav {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 20px;
+  }
+  .hdr__logo { display: flex; }
+  .hdr__logo img { width: 40px; height: 40px; }
+  .hdr__actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hdr__msg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-primary);
+    border: 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .hdr__msg img { width: 24px; height: 24px; }
+  .hdr__burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-white-15);
+    border: 0;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+  }
+  .hdr__burger span {
+    width: 20px;
+    height: 2px;
+    background: var(--color-white);
+    border-radius: 10px;
+  }
+
+  @media (min-width: 641px) {
+    .hdr__nav { padding: 16px 60px; }
+  }
+
+  @media (min-width: 1025px) {
+    .hdr__nav { padding: 20px 120px; }
+    .hdr__logo img { width: 48px; height: 48px; }
+  }
+</style>

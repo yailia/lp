@@ -1,0 +1,80 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+---
+
+<section class="book" data-node-id="5121:314026" style={`--book-bg: url(${asset('img/cta/book-bg.png')})`}>
+  <div class="book__head">
+    <h2>Book a meeting</h2>
+    <p>Need a personal roadmap to launch your own iGaming project, or want to take your platform to the next level?</p>
+  </div>
+  <div class="book__calendy">
+    <img src={asset('img/cta/calendy.png')} alt="Calendar form" />
+  </div>
+</section>
+
+<style>
+  .book {
+    position: relative;
+    padding: 48px 20px;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .book::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--book-bg);
+    background-size: cover;
+    background-position: center;
+  }
+  .book::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(196deg, rgba(0,0,0,0) 46%, #000 67%),
+      linear-gradient(87deg, rgba(0,0,0,0) 48%, #000 100%);
+  }
+  .book__head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .book__head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .book__head p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .book__calendy {
+    width: 100%;
+    aspect-ratio: 1364 / 2042;
+  }
+  .book__calendy img { width: 100%; height: 100%; object-fit: cover; }
+
+  @media (min-width: 641px) {
+    .book { padding: 72px 60px; }
+    .book__head h2 { font-size: 44px; }
+    .book__head p { font-size: 16px; max-width: 720px; margin: 0 auto; }
+    .book__calendy { max-width: 720px; margin: 0 auto; aspect-ratio: 3 / 2; }
+  }
+
+  @media (min-width: 1025px) {
+    .book { padding: 96px 120px; }
+    .book__head h2 { font-size: 54px; }
+    .book__calendy { max-width: 960px; aspect-ratio: 16 / 9; }
+  }
+</style>

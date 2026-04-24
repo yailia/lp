@@ -1,0 +1,185 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+
+const cards = [
+  {
+    icon: 'target',
+    title: 'Deploy the key asset: PREDICTOR',
+    text: 'Discover our new event-based betting solution designed for operators who want to expand their offering with a fresh engagement format built around real-world events and changing player behavior.',
+  },
+  {
+    icon: 'cpu',
+    title: 'Get your gadgets: Solutions',
+    text: 'Meet the latest products and features from Slotegrator as well as our most in-demand software, including the turnkey online casino platform, gaming content aggregator APIgrator, and sportsbook.',
+  },
+  {
+    icon: 'doc',
+    title: 'Acquire clearance: License',
+    text: 'Talk to our team about licensing, compliance, and jurisdiction selection. We’ll help you understand the process and explore the right path for your business goals.',
+  },
+  {
+    icon: 'users',
+    title: 'Visit intelligence briefing',
+    text: 'Meet our agents and get expert recommendations about your iGaming business’s development, content, payment solutions, tech integration, sales and marketing strategy, and compliance.',
+  },
+];
+---
+
+<section class="why" data-node-id="5111:104247" style={`--why-bg: url(${asset('img/why/bg.png')})`}>
+  <div class="why__title">
+    <h2>Check in at HQ: Secure a meeting at the Slotegrator stand</h2>
+    <p>We’re bringing a solution that completely redefines betting, and you will be among the first to see it. PREDICTOR is Slotegrator’s new solution for event-based betting — created for operators looking to explore one of the most talked-about emerging formats in iGaming.</p>
+    <p>Book a meeting at our stand to see how it works, discuss where it fits your business, and explore what else Slotegrator can help you launch, integrate, and scale.</p>
+  </div>
+
+  <ul class="why__cards">
+    {cards.map((c) => (
+      <li class="why-card">
+        <span class="why-card__icon" aria-hidden="true">
+          {c.icon === 'target' && (
+            <svg viewBox="0 0 32 32" fill="none" stroke="#89E500" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="7"/><circle cx="16" cy="16" r="2.5" fill="#89E500"/>
+              <path d="M16 2v4M16 26v4M2 16h4M26 16h4"/>
+            </svg>
+          )}
+          {c.icon === 'cpu' && (
+            <svg viewBox="0 0 32 32" fill="none" stroke="#89E500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="7" width="18" height="18" rx="2"/>
+              <rect x="12" y="12" width="8" height="8" rx="1"/>
+              <path d="M13 7V4M19 7V4M13 28v-3M19 28v-3M7 13H4M7 19H4M28 13h-3M28 19h-3"/>
+            </svg>
+          )}
+          {c.icon === 'doc' && (
+            <svg viewBox="0 0 32 32" fill="none" stroke="#89E500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 4h10l5 5v17a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+              <path d="M19 4v5h5M12 16h8M12 20h8M12 12h5"/>
+            </svg>
+          )}
+          {c.icon === 'users' && (
+            <svg viewBox="0 0 32 32" fill="none" stroke="#89E500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/><circle cx="22" cy="14" r="3"/>
+              <path d="M5 26c0-3.5 3-6 7-6s7 2.5 7 6M20 26c0-2.5 2-4.5 5-4.5s5 2 5 4.5"/>
+            </svg>
+          )}
+        </span>
+        <div class="why-card__body">
+          <h3>{c.title}</h3>
+          <p>{c.text}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .why {
+    position: relative;
+    padding: 56px 20px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .why::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--why-bg);
+    background-size: cover;
+    background-position: center;
+  }
+  .why::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(204deg, rgba(0,0,0,0) 45%, #000 67%),
+      linear-gradient(88deg, rgba(0,0,0,0) 48%, #000 100%);
+  }
+
+  .why__title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 30px;
+  }
+  .why__title h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .why__title p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .why__cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .why-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+  }
+  .why-card__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 120px;
+    background: rgba(137, 229, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .why-card__icon svg { width: 32px; height: 32px; }
+  .why-card__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .why-card__body h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .why-card__body p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  @media (min-width: 641px) {
+    .why { padding: 72px 60px; }
+    .why__title h2 { font-size: 44px; }
+    .why__title p { font-size: 16px; }
+    .why__cards { max-width: 780px; margin: 0 auto; width: 100%; }
+    .why-card { padding: 28px; }
+    .why-card__icon { width: 56px; height: 56px; }
+    .why-card__body h3 { font-size: 26px; }
+    .why-card__body p { font-size: 16px; }
+  }
+
+  @media (min-width: 1025px) {
+    .why { padding: 96px 120px; }
+    .why__title h2 { font-size: 54px; max-width: 900px; }
+    .why__cards {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+</style>

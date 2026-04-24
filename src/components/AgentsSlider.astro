@@ -1,0 +1,228 @@
+---
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+
+const agents = [
+  { img: 'olga.png', name: 'Olga Ivanchik', role: 'COO' },
+  { img: 'danil.png', name: 'Danil Bratkovskii', role: 'Head of CDM' },
+  { img: 'artur.png', name: 'Artur Movchaniuk', role: 'Business Development Manager' },
+  { img: 'nikolaj.png', name: 'Nikolaj Plugatar', role: 'Business Development Manager' },
+  { img: 'dmytro.png', name: 'Dmytro Stemkovsky', role: 'Head of Sales' },
+  { img: 'ataur.png', name: 'Ataur Rosul Abeer', role: 'Sales Supervisor' },
+  { img: 'andrii.png', name: 'Andrii Lypovyi', role: 'Senior Sales Manager' },
+];
+---
+
+<section class="agents" data-node-id="5422:418250">
+  <div class="agents__head">
+    <h2>Meet our agents</h2>
+    <p>Need a personal roadmap to launch your own iGaming project, or want to take your platform to the next level?</p>
+  </div>
+
+  <div class="agents__track" data-agents-track>
+    {agents.map((a) => (
+      <div class="pers">
+        <div class="pers__photo">
+          <img class="pers__tri pers__tri--tl" src={asset('img/agents/tri.svg')} alt="" />
+          <img class="pers__tri pers__tri--br" src={asset('img/agents/tri2.svg')} alt="" />
+          <img class="pers__img" src={asset(`img/agents/${a.img}`)} alt={a.name} />
+        </div>
+        <div class="pers__row">
+          <div class="pers__name">
+            <p class="pers__n">{a.name}</p>
+            <p class="pers__r">{a.role}</p>
+          </div>
+          <a class="pers__ln" href="#" aria-label="LinkedIn">
+            <img src={asset('img/agents/linkedin.svg')} alt="" />
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="agents__controls">
+    <button class="agents__btn" type="button" aria-label="Prev" data-agents-prev>
+      <img src={asset('img/agents/arrow-left.svg')} alt="" />
+    </button>
+    <div class="agents__dots" data-agents-dots>
+      {agents.map((_, i) => <span class={i === 0 ? 'is-active' : ''}></span>)}
+    </div>
+    <button class="agents__btn" type="button" aria-label="Next" data-agents-next>
+      <img src={asset('img/agents/arrow-right.svg')} alt="" />
+    </button>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector('[data-agents-track]')?.closest('.agents');
+  if (section) {
+    const track = section.querySelector<HTMLElement>('[data-agents-track]')!;
+    const prev = section.querySelector<HTMLButtonElement>('[data-agents-prev]')!;
+    const next = section.querySelector<HTMLButtonElement>('[data-agents-next]')!;
+    const dots = Array.from(section.querySelectorAll<HTMLElement>('[data-agents-dots] span'));
+    const cards = Array.from(track.children) as HTMLElement[];
+
+    const scrollTo = (i: number) => {
+      const card = cards[Math.max(0, Math.min(cards.length - 1, i))];
+      if (card) track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    };
+    const active = () => {
+      const x = track.scrollLeft;
+      let best = 0; let bestD = Infinity;
+      cards.forEach((c, i) => {
+        const d = Math.abs(c.offsetLeft - track.offsetLeft - x);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === best));
+      return best;
+    };
+    track.addEventListener('scroll', active, { passive: true });
+    prev.addEventListener('click', () => scrollTo(active() - 1));
+    next.addEventListener('click', () => scrollTo(active() + 1));
+    active();
+  }
+</script>
+
+<style>
+  .agents {
+    padding: 48px 20px;
+  }
+  .agents__head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 30px;
+  }
+  .agents__head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-white);
+  }
+  .agents__head p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .agents__track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .agents__track::-webkit-scrollbar { display: none; }
+
+  .pers {
+    flex: 0 0 auto;
+    width: 290px;
+    max-width: 320px;
+    min-width: 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-snap-align: start;
+  }
+  .pers__photo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #71ed16;
+    overflow: hidden;
+  }
+  .pers__tri {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .pers__tri--tl { top: 0; left: 0; }
+  .pers__tri--br { bottom: 0; right: 0; transform: rotate(180deg); }
+  .pers__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pers__row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .pers__name { flex: 1; min-width: 0; }
+  .pers__n {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 0 0 2px;
+    color: var(--color-white);
+  }
+  .pers__r {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .pers__ln {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+  }
+  .pers__ln img { width: 100%; height: 100%; }
+
+  .agents__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  .agents__btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 30px;
+    background: #423d63;
+    border: 0;
+    cursor: pointer;
+    backdrop-filter: blur(3px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .agents__btn img { width: 24px; height: 24px; }
+  .agents__dots {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 0;
+  }
+  .agents__dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(153, 153, 153, 0.8);
+    transition: background 0.2s;
+  }
+  .agents__dots span.is-active { background: var(--color-primary); }
+
+  @media (min-width: 641px) {
+    .agents { padding: 72px 60px; }
+    .agents__head h2 { font-size: 44px; }
+    .agents__head p { font-size: 16px; }
+    .pers { width: 260px; }
+  }
+
+  @media (min-width: 1025px) {
+    .agents { padding: 96px 120px; max-width: 1440px; margin: 0 auto; }
+    .agents__head h2 { font-size: 54px; }
+    .pers { width: 290px; }
+  }
+</style>

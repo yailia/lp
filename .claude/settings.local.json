@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/18e7c28d-fa78-4f3c-9d03-fec2f0e1844e\" -o C:/work/_SLOT/lp/public/img/why/bg.png)",
+      "mcp__figma__get_design_context",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/8f2d408c-6a4e-4636-9991-cc0e6524691e\" -o C:/work/_SLOT/lp/public/img/team/map.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/4ea6ee64-1d59-4ebd-8245-6a39cd15e825\" -o C:/work/_SLOT/lp/public/img/cta/bg.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/e3923b2b-55b5-4bd1-a6ba-03916f61b55c\" -o geco.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/1bd9da39-da7e-4a7f-a7cc-3a783c977403\" -o geco-mask.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/72b9bb3b-a328-4d17-992c-9bd111511255\" -o C:/work/_SLOT/lp/public/img/faq/about-slot.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/e2aaa454-2769-4fb2-a14c-a4ff3d28f7b0\" -o C:/work/_SLOT/lp/public/img/cta/book-bg.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/c0a74121-b387-4c0a-af0f-34438398c740\" -o C:/work/_SLOT/lp/public/img/cta/calendy.png)",
+      "Bash(py *)",
+      "mcp__figma__get_screenshot",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/675f7616-1b60-4ec1-a478-d3ec93eb8d85\" -o /tmp/tlead810.png)",
+      "Bash(curl -sL \"https://www.figma.com/api/mcp/asset/675f7616-1b60-4ec1-a478-d3ec93eb8d85\" -o C:/work/_SLOT/lp/.tmp/t810.png)"
+    ]
+  }
+}

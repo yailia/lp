@@ -1,0 +1,316 @@
+---
+import ParticlesCanvas from './ParticlesCanvas.astro';
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+---
+
+<section class="hero" data-node-id="5407:361264">
+  <div class="hero__top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__marquee" aria-hidden="true">
+      <span>igb LONdON exhibition iGB L!VE 2026 slotegrator&nbsp;</span>
+      <span>igb LONdON exhibition iGB L!VE 2026 slotegrator&nbsp;</span>
+    </div>
+    <div class="hero__char">
+      <img src={asset('img/hero/character.png')} alt="" />
+    </div>
+
+    <div class="hero__card">
+      <img class="hero__tri hero__tri--tr" src={asset('img/hero/triangle-green.svg')} alt="" />
+      <img class="hero__tri hero__tri--bl" src={asset('img/hero/triangle-green2.svg')} alt="" />
+      <div class="hero__title-wrap">
+        <h1 class="hero__title">
+          Evolve to lead: <span class="hero__accent">accept your mission</span> at iGB LiVE 2026
+        </h1>
+      </div>
+      <p class="hero__date">01-02.07 | ExCel London</p>
+      <p class="hero__desc">
+        Slotegrator is an international team of passionate specialists who create and implement innovations in the iGaming and digital entertainment industries.
+      </p>
+      <button class="btn btn--primary">Initiate contact</button>
+    </div>
+  </div>
+
+  <div class="hero__gear-wrap">
+    <div class="hero__gear">
+      <img class="gear__tri gear__tri--tl" src={asset('img/hero/triangle-lime.svg')} alt="" />
+      <img class="gear__tri gear__tri--br" src={asset('img/hero/triangle-lime2.svg')} alt="" />
+      <h2 class="hero__gear-title">Gear up: we are bringing something special</h2>
+      <div class="hero__gear-blocks">
+        <div class="gear-block">
+          <h3>PREDICTOR BY SLOTEGRATOR</h3>
+          <p>Join the most rapidly growing market out there: Slotegrator’s new prediction market engine will make you the host of the most popular vertical in 2026. Activate retention protocol with PREDICTOR.</p>
+        </div>
+        <div class="gear-block">
+          <h3>INCOMING: ENCRYPTED</h3>
+          <p>Undercover agents, get ready: A secret mission will be declassified at HQ — Slotegrator is bringing its best offer. Details remain classified until rendezvous, but trust us — it’s worth the wait.</p>
+        </div>
+        <div class="gear-block">
+          <h3>CASINO BUILDER</h3>
+          <p>Agent, seize command over your casino UX with Slotegrator’s frontend design solution — a system of customizable templates and widgets prepared by professional designers and business analysts.</p>
+        </div>
+      </div>
+      <div class="hero__gear-gpu">
+        <ParticlesCanvas />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero__top {
+    position: relative;
+    padding: 20px 20px 30px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(60% 40% at 50% 95%, rgba(72, 14, 120, 1) 0%, rgba(54, 11, 90, 0.75) 25%, rgba(36, 7, 60, 0.5) 50%, transparent 100%),
+      radial-gradient(55% 35% at 50% 2%, rgba(139, 11, 233, 1) 0%, rgba(154, 33, 236, 0.8) 20%, rgba(169, 56, 239, 0.6) 40%, rgba(198, 100, 245, 0.2) 80%, transparent 100%),
+      #7502df;
+  }
+  .hero__marquee {
+    position: absolute;
+    left: -54px;
+    top: 40%;
+    width: 6126px;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #71ed16;
+    font-size: 160px;
+    line-height: 130px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0.85;
+    mix-blend-mode: lighten;
+    display: flex;
+  }
+  .hero__char {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    overflow: visible;
+  }
+  .hero__char img {
+    width: 522px;
+    max-width: none;
+    height: auto;
+    margin-top: -50px;
+    object-fit: contain;
+  }
+
+  .hero__card {
+    position: relative;
+    z-index: 3;
+    background: #000;
+    padding: 24px 24px 56px;
+    border-right: 8px solid #71ed16;
+    border-bottom: 8px solid #71ed16;
+    margin-top: 10px;
+  }
+  .hero__tri {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+  }
+  .hero__tri--tr { right: -8px; top: 0; transform: scaleY(-1) rotate(180deg); }
+  .hero__tri--bl { left: 0; bottom: -8px; transform: scaleY(-1); }
+
+  .hero__title-wrap {
+    border-bottom: 4px solid var(--color-primary);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .hero__accent { color: var(--color-primary); }
+  .hero__date {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 10px;
+    color: var(--color-white);
+  }
+  .hero__desc {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0 0 32px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+  }
+  .btn--primary { background: var(--color-primary); color: #000; }
+
+  .hero__gear-wrap {
+    background: #71ed16;
+    padding: 0 4px 4px;
+  }
+  .hero__gear {
+    position: relative;
+    padding: 68px 16px;
+    overflow: hidden;
+    isolation: isolate;
+    background: #000;
+  }
+  .hero__gear::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/img/hero/gear-bg.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+  }
+  .hero__gear::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 85%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+  }
+  .gear__tri {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .gear__tri--tl { top: 0; left: 0; }
+  .gear__tri--br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+  .hero__gear-title {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0 0 30px;
+    color: var(--color-white);
+  }
+  .hero__gear-blocks {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+  .gear-block h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 0 0 4px;
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+  .gear-block p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+    color: var(--color-white);
+  }
+
+  .hero__gear-gpu {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 320px;
+  }
+  .hero__gear-gpu :global(.particles-canvas) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  @media (min-width: 641px) {
+    .hero__top { padding: 40px 60px 60px; }
+    .hero__marquee { font-size: 240px; line-height: 200px; top: 30%; }
+    .hero__char { height: 700px; }
+    .hero__char img { width: 900px; margin-top: -80px; }
+    .hero__card { padding: 40px 40px 72px; margin-top: 20px; }
+    .hero__tri, .hero__tri--tr, .hero__tri--bl { width: 70px; height: 70px; }
+    .hero__title { font-size: 44px; }
+    .hero__date { font-size: 28px; }
+    .hero__desc { font-size: 16px; max-width: 640px; }
+    .btn { padding: 18px 28px; font-size: 18px; }
+
+    .hero__gear { padding: 96px 60px; }
+    .hero__gear-title { font-size: 40px; margin: 0 0 48px; max-width: 700px; }
+    .hero__gear-blocks { gap: 48px; max-width: 700px; }
+    .gear-block h3 { font-size: 28px; }
+    .gear-block p { font-size: 16px; }
+    .hero__gear-gpu { height: 480px; }
+    .gear__tri { width: 80px; height: 80px; }
+  }
+
+  @media (min-width: 1025px) {
+    .hero__top { padding: 60px 120px 80px; }
+    .hero__char { height: 820px; }
+    .hero__char img { width: 1040px; }
+    .hero__card { max-width: 720px; margin-inline: auto; padding: 48px 56px 80px; }
+    .hero__title { font-size: 54px; }
+    .hero__date { font-size: 32px; }
+
+    .hero__gear { padding: 120px 120px; }
+    .hero__gear-title { font-size: 48px; max-width: 900px; }
+    .hero__gear-wrap .hero__gear-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: none;
+    }
+    .hero__gear-gpu {
+      position: absolute;
+      inset: 0;
+      height: auto;
+      z-index: 1;
+      -webkit-mask-image: radial-gradient(ellipse 45% 80% at 50% 50%, #000 10%, rgba(0,0,0,0.4) 50%, transparent 80%);
+              mask-image: radial-gradient(ellipse 45% 80% at 50% 50%, #000 10%, rgba(0,0,0,0.4) 50%, transparent 80%);
+    }
+    .hero__gear { isolation: isolate; min-height: 640px; }
+    .hero__gear-title,
+    .hero__gear-blocks { position: relative; z-index: 2; }
+  }
+</style>
