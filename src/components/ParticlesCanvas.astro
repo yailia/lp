@@ -1,0 +1,33 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`particles-canvas ${className}`} data-particles>
+</div>
+
+<style>
+  .particles-canvas {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #050509;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+  import { initParticles } from '../lib/particles/effect';
+
+  const nodes = document.querySelectorAll<HTMLElement>('[data-particles]');
+  nodes.forEach((el) => {
+    if (el.dataset.inited === '1') return;
+    el.dataset.inited = '1';
+    initParticles(el);
+  });
+</script>

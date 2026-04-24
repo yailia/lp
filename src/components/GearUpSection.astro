@@ -1,0 +1,152 @@
+---
+import ParticlesCanvas from './ParticlesCanvas.astro';
+const base = import.meta.env.BASE_URL;
+const triSrc = `${base}img/triangle.svg`.replace(/\/{2,}/g, '/');
+---
+
+<section class="gear" data-node-id="5272:337180">
+  <img class="gear__tri gear__tri--tl" src={triSrc} alt="" aria-hidden="true" />
+  <img class="gear__tri gear__tri--br" src={triSrc} alt="" aria-hidden="true" />
+
+  <div class="gear__bg">
+    <ParticlesCanvas />
+  </div>
+
+  <div class="gear__inner">
+    <h2 class="gear__title">Lorem ipsum dolor sit amet consectetur adipiscing</h2>
+
+    <div class="gear__row">
+      <div class="gear__block gear__block--tl">
+        <h3 class="gear__heading">LOREM IPSUM DOLOR</h3>
+        <p class="gear__body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+        </p>
+      </div>
+
+      <div class="gear__block gear__block--bl">
+        <h3 class="gear__heading">CONSECTETUR ADIPISCING</h3>
+        <p class="gear__body">
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+        </p>
+      </div>
+
+      <div class="gear__block gear__block--r">
+        <h3 class="gear__heading">SED DO EIUSMOD</h3>
+        <p class="gear__body">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gear {
+    position: relative;
+    background: #000;
+    color: #fff;
+    padding: 80px clamp(24px, 8vw, 250px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .gear__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    -webkit-mask-image: radial-gradient(ellipse 42% 85% at 50% 50%, #000 10%, rgba(0,0,0,0.6) 40%, transparent 80%);
+            mask-image: radial-gradient(ellipse 42% 85% at 50% 50%, #000 10%, rgba(0,0,0,0.6) 40%, transparent 80%);
+  }
+  .gear__bg :global(.particles-canvas) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .gear__inner {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .gear__inner :where(h2, h3, p, a, button) {
+    pointer-events: auto;
+  }
+
+  .gear__tri {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
+  }
+  .gear__tri--tl { top: 0; left: 0; }
+  .gear__tri--br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+  .gear__title {
+    font-family: 'QB One', 'Manrope', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.3;
+    margin: 0 0 48px;
+  }
+
+  .gear__row {
+    position: relative;
+    height: 524px;
+  }
+
+  .gear__block {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: clamp(220px, 22vw, 320px);
+  }
+  .gear__block--tl { top: 0; left: 0; }
+  .gear__block--bl { bottom: 0; left: 0; }
+  .gear__block--r  { top: 50%; right: 0; transform: translateY(-50%); }
+
+  .gear__heading {
+    font-family: 'QB One', 'Manrope', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .gear__body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .gear__row {
+      position: static;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .gear__block,
+    .gear__block--tl,
+    .gear__block--bl,
+    .gear__block--r {
+      position: static;
+      width: 100%;
+      transform: none;
+    }
+    .gear__bg {
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 10%, transparent 80%);
+              mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 10%, transparent 80%);
+    }
+  }
+</style>

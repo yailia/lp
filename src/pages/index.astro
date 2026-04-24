@@ -1,5 +1,5 @@
 ---
-
+import GearUpSection from '../components/GearUpSection.astro';
 ---
 
 <html lang="en">
@@ -9,9 +9,24 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Slotegrator — Gear up</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<main>
+			<GearUpSection />
+		</main>
 	</body>
 </html>
+
+<style is:global>
+	html, body {
+		margin: 0;
+		padding: 0;
+		background: #000;
+		color: #fff;
+		font-family: 'Manrope', system-ui, sans-serif;
+	}
+</style>
